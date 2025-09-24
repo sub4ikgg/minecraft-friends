@@ -1,0 +1,392 @@
+.minecraft-header-wrapper {
+  width: 100vw;
+  min-height: 40vh;
+  background-color: #4b4bcf1a;
+  overflow: hidden;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.minecraft-header {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 80vw;
+  height: 100vh;
+  background: url('/image.png') no-repeat right center;
+  background-size: cover;
+  opacity: 0.85;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#root {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.description-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 5vw 0 5vw;
+}
+
+.description {
+  font-size: 1.3em;
+  color: #8c8c8c;
+  transition: color 0.5s;
+}
+
+/* Allow text selection for h1 and description */
+h1, .description {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Desktop layout with side panels */
+.main-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 5vw 0 5vw;
+}
+
+.mod-list-wrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.mod-list {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5em;
+  color: #e9e9e9;
+}
+
+.mod-list h3 {
+  margin: 0 0 1em 0;
+  font-size: 1.1em;
+  color: #fff;
+  text-align: left;
+}
+
+.mod-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mod-list li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1em;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.mod-name {
+  font-weight: 600;
+  color: #6c6cff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mod-name:hover {
+  color: #8888ff;
+  text-decoration: underline;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+  .description:hover {
+    color: #e9e9e9;
+    transition: color 0.5s;
+  }
+
+  .site-btn:hover {
+    background: #4b4bcf;
+    color: #e9e9e9;
+    box-shadow: 0 4px 16px rgba(108,108,255,0.18);
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+  margin-top: 3em;
+  padding: 0 5vw 5vw 5vw;
+}
+
+.minecraft-bg-wrapper {
+  width: 100%;
+  background-color: #4b4bcf1a;
+  pointer-events: none;
+}
+
+.toast-container {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  background: #6c6cff;
+  color: #fff;
+  padding: 0.7em 1.4em;
+  border-radius: 10px;
+  font-size: 1.05em;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(108,108,255,0.18);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.4s, transform 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast.toast--visible {
+  opacity: 0.95;
+  transform: translateY(0);
+}
+
+.site-btn {
+  background: #6c6cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9em 2em;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(108,108,255,0.12);
+  text-decoration: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  touch-action: manipulation;
+}
+
+/* Prevent text selection inside buttons/links */
+.site-btn, .site-btn * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Static visual variant: no color/size/weight changes in any state */
+.site-btn--static,
+.site-btn--static * {
+  color: #fff !important;
+}
+.site-btn--static {
+  box-shadow: 0 2px 8px rgba(108,108,255,0.12) !important;
+  transform: none !important;
+}
+.site-btn--static:link,
+.site-btn--static:visited,
+.site-btn--static:active,
+.site-btn--static:focus,
+.site-btn--static:focus-visible,
+.site-btn--static:focus-within {
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(108,108,255,0.12) !important;
+  transform: none !important;
+  outline: none !important;
+}
+
+/* Secondary (gray) button variant */
+.site-btn--secondary {
+  background: #6b7280; /* gray */
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Keep text color white in all states */
+.site-btn--secondary,
+.site-btn--secondary * {
+  color: #fff !important;
+}
+
+@media (hover: hover) {
+  .site-btn--secondary:hover {
+    background: #4b5563; /* darker gray on hover */
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+}
+
+.site-btn--secondary:active,
+.site-btn--secondary:focus-visible {
+  background: #475569; /* active/focus gray */
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+  transform: translateY(0.5px);
+}
+
+a.site-btn--secondary:visited {
+  color: #fff !important;
+}
+
+.site-btn--secondary:link,
+.site-btn--secondary:hover,
+.site-btn--secondary:active,
+.site-btn--secondary:focus,
+.site-btn--secondary:focus-visible,
+.site-btn--secondary:focus-within {
+  color: #fff !important;
+}
+
+/* Visually suppress selection highlight if it still occurs */
+.site-btn::selection,
+.site-btn *::selection {
+  background: transparent;
+  color: inherit;
+}
+
+.site-btn:active,
+.site-btn:focus-visible {
+  background: #4b4bcf;
+  box-shadow: 0 4px 12px rgba(108,108,255,0.14);
+  transform: translateY(0.5px);
+  color: #fff; /* keep text color stable on press/focus */
+}
+
+/* Keep anchor text color stable after visit */
+a.site-btn:visited {
+  color: #fff;
+}
+
+/* Remove persistent outline on touch devices but keep it for keyboard focus */
+.site-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Desktop layout for large screens */
+@media (min-width: 1001px) {
+  .main-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+  }
+
+  .description {
+    max-width: 70vw;
+  }
+
+  .mod-list-wrapper {
+    width: 100%;
+  }
+
+  .mod-list {
+    width: 100%;
+    max-width: 900px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+
+  .mod-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em 1em;
+  }
+
+  .mod-list li {
+    user-select: text;
+    padding: 0.5em 0;
+  }
+
+  .mod-list li:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .mod-list {
+    width: 100%;
+    margin-left: 5vw;
+    margin-right: 2em;
+  }
+
+  .mod-list li:last-child {
+    border-bottom: none;
+  }
+
+  .minecraft-header-wrapper {
+    min-height: 25vh;
+  }
+
+  .main-content-wrapper {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .description {
+    padding: 0 5vw 0 5vw;
+  }
+
+  .button-group {
+    padding: 0 5vw 5vw 5vw;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .site-btn {
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+    padding: 1em 1.2em;
+  }
+
+  .toast {
+    font-size: 1em;
+    padding: 0.8em 1.2em;
+  }
+}
